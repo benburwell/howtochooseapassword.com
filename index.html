@@ -3,86 +3,208 @@
   <head>
     <title>How to Choose a Password</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/site.css">
   </head>
   <body>
     <main>
       <h1>How to Choose a Password</h1>
 
+      <aside>
+        <p>
+          <strong>
+            the short version:
+          </strong>
+          Use <a href="#generate">randomly generated</a> passwords and use a
+          <a href="#store">password manager</a> to store them.
+        </p>
+      </aside>
+
+      <h2>
+        <a name="why">
+          Why strong passwords are important
+        </a>
+      </h2>
+
       <p>
-        It’s important to choose passwords that satisfy two basic requirements:
+        When choosing a password, it’s important to make sure that no one can
+        guess it — that’s the whole point, right?
+      </p>
+
+      <p>
+        If we want to make sure no one can guess our passwords, we need to
+        think about what <strong>adversaries</strong> might be trying to guess
+        them and how they might do it. This is part of a process called
+        <strong>threat modeling</strong>. Some adversaries we can think about
+        are:
+      </p>
+
+      <ul>
+        <li>
+          <strong>People who know us.</strong> Our friends know a lot about us,
+          like our birthday, our pets’ names, our favorite songs, and other
+          personal information. Even if we’re not worried about friends
+          guessing our passwords, an adversary might easily find these details
+          on the Internet, so we shouldn’t use any of these things in our
+          passwords.
+        </li>
+        <li>
+          <strong>People who know a password we’ve used in the past.</strong>
+          Unfortunately, it’s not unusual for passwords to be discovered by
+          adversaries. This might happen if a website or app we use is
+          compromised, or if a computer we type our password on has been
+          infected with malware. This means it’s a bad idea to create a new
+          password by making a variation of another one.
+        </li>
+        <li>
+          <strong>People who know a lot of common passwords.</strong> Attackers
+          have compiled “password dictionaries” containing thousands of
+          commonly used passwords. Even if an adversary is not specifically
+          trying to find <em>our</em> password, they might use lists like this
+          to discover our password if it is one of the common ones.
+        </li>
+      </ul>
+
+      <p>
+        <strong>
+          The way to make sure that no one can guess our passwords is to make
+          them completely random.
+        </strong>
+        When our passwords are randomly generated, they don’t have any
+        information related to us that friends might be able to guess. If an
+        adversary learns one of our passwords, they will be no closer to
+        guessing any of our other passwords.  And of course, randomly generated
+        passwords are very unlikely to be listed in password dictionaries.
+      </p>
+
+      <h2>
+        <a name="generate">
+          How to generate a random password
+        </a>
+      </h2>
+
+      <p>
+        Being truly random is something that people are very bad at. Even when
+        we <em>think</em> we are being random, there are often patterns
+        associated with the “random” things we come up with.
+      </p>
+
+      <p>
+        When we want to create good, random passwords, one thing we can use is
+        software (such as our password manager, more on this below) to help us.
+      </p>
+
+      <p>
+        Another method is to use a word list and dice to create a random
+        passphrase. The
+        <a href="https://www.eff.org">Electronic Frontier Foundation</a>,
+        a digital privacy advocacy group, has created
+        <a href="https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt">
+          a wordlist you can download
+        </a>
+        for this purpose. To use this method, you’ll need five dice (or you can
+        roll a single die five times). Here’s how:
       </p>
 
       <ol>
         <li>
-          <strong>No one should be able to guess it,</strong>
-          either based on what they know about you, by simply guessing common
-          passwords, or based on other passwords they know you’ve used.
+          Roll five dice (or one die five times) and read the number from each
+          so that you have five digits, for example: 1, 6, 3, 5, 2.
         </li>
         <li>
-          <strong>It should grant access to only one thing.</strong>
-          You should assume that the password <em>will</em> be compromised, and
-          when it is, the attacker should not be able to use that information to
-          gain access to any of your other accounts.
+          Look at
+          <a href="https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt">
+            the wordlist
+          </a>
+          to find the word next to the number you rolled.
+          In this case, we find the line <code>16352 comfort</code>, so our
+          word word is <strong>comfort</strong>.
+        </li>
+        <li>
+          Repeat the first two steps until you have at least six words. You
+          will end up with a random phrase like
+          <strong>comfort tableful booth tulip dandelion stable</strong>
+          which is your new random passphrase.
+        </li>
+        <li>
+          Make up a little story to help remember the passphrase. For example:
+          “The diner had a <strong>comfort</strong>able
+          <strong>tableful</strong> in the <strong>booth</strong> with
+          <strong>tulip</strong>s and <strong>dandelion</strong>s in a
+          <strong>stable</strong> vase.”
         </li>
       </ol>
 
-      <h2>Use long, random passwords</h2>
       <p>
-        The easiest way to make sure that no one can guess your password is to
-        make it completely random. Using random passwords helps achieve the
-        principles above because:
-      </p>
-      <ul>
-        <li>
-          It automatically won’t have any information associated with you, such
-          as a pet’s or family member’s name.
-        </li>
-        <li>
-          If you need to change your password, it’s easy to come up with a
-          completely new one rather than just changing <code>randomness</code> to
-          <code>randomness1</code>, then to <code>randomness2</code> and so on.
-        </li>
-      </ul>
-      <p>
-        A good, random password depends on <em>entropy</em>, which is a measure
-        of the amount of information it contains. Some passwords that
-        <em>appear</em> random and secure are not. For example,
-        <code>zxcvbn</code> <em>looks</em> like a bunch of random letters, but is
-        actually a common password because it’s the first six keys on the bottom
-        row of the QWERTY keyboard.
+        If an adversary wanted to guess our passphrase, even if they had our
+        wordlist and knew exactly how we created it, they would need to
+        correctly guess 30 random die rolls in the right order. The probability
+        of this is 1 in 221,073,919,720,733,357,899,776. It is
+        <em>extremely</em> unlikely they would be successful, as it would take
+        three billion years of making a million guesses every second before
+        they would be likely to succeed.
       </p>
 
-      <h2>Use a password manager to help you remember</h2>
+      <h2>
+        <a name="store">
+          How to remember your passwords
+        </a>
+      </h2>
+
       <p>
-        Unless you have a superhuman memory, you won’t be able to remember all
-        the long, random passwords that you have. A great solution to this
-        problem is to use a password manager. Password managers are software
-        programs that run on your computer and/or mobile phone that securely
-        store your passwords and guard them with a master passphrase.
+        It’s also important not to use the same password twice. Imagine if we
+        generate a completely random password and use it for our email account,
+        and we also use it for a social media site. If an adversary learns our
+        email address and password for the social media site, they could easily
+        try that same password on our email account, and since we used the same
+        random password, they would succeed easily. This is why you should only
+        use each password for a single site.
       </p>
+
       <p>
-        A good password manager uses your passphrase to encrypt all of your
-        passwords. This means that even the company who makes the software does
-        not have access to your secret passwords; the only way someone could
-        access them is by knowing your passphrase.
+        When there are a lot of different things we need passwords for, it
+        quickly becomes hard to remember all of them. Luckily, we can use a
+        <strong>password manager</strong> to help us out. Password managers are
+        software programs that help us securely store our passwords.
       </p>
+
+      <p>
+        Imagine writing down all of our passwords on a sheet of paper, and then
+        scrambling them all up according to a secret pattern. Even though
+        someone might look at the paper, they won’t be able to figure out any
+        of our passwords without knowing the secret pattern we used to scramble
+        them. Password managers use a similar idea; they use a
+        <strong>master passphrase</strong> to encrypt the list of all of our
+        passwords. The master passphrase is like the scrambling pattern: an
+        adversary can access the list of all our passwords if and only if they
+        discover the master passphrase.
+      </p>
+
+      <p>
+        It’s very important to use a long, randomly generated master passphrase
+        because all of our passwords are only as good as our master passphrase.
+        When we use a password manager, we only need to remember our passphrase
+        to unlock our list of passwords. The password manager stores all of our
+        other passwords for us.
+      </p>
+
       <p>
         Another benefit to using a password manager is that they help you
         generate new passwords when you need them. Here are a few recommendations:
       </p>
+
       <ul>
         <li><a href="https://keepass.info/">KeePass</a></li>
         <li><a href="https://1password.com/">1Password</a></li>
+        <li><a href="https://www.passwordstore.org/">pass</a></li>
       </ul>
+
+      <footer>
+        The content of this site is <a href="http://unlicense.org">in the public domain</a>.
+        <a href="https://github.com/benburwell/howtochooseapassword.com">
+          Contributions are welcomed
+        </a>.
+      </footer>
     </main>
-    <footer>
-      The content of this site is
-      <a href="https://github.com/benburwell/howtochooseapassword.com">
-        hosted on GitHub
-      </a>
-      and in the <a href="http://unlicense.org">public domain</a>.
-      Contributions are welcomed.
-    </footer>
   </body>
 </html>
