@@ -14,7 +14,7 @@ There are two primary use cases:
 
 ## Contributing
 
-Contributions are welcome! See [CONTRIBUTING.md]()
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 
